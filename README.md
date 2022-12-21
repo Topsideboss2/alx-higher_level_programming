@@ -1,1 +1,1 @@
-This is my Python hello world directory
+This is my Alx Higher Level Programming directory
