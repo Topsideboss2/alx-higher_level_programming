@@ -1,9 +1,14 @@
 #!/usr/bin/python3
-LockedClass = __import__('101-locked_class').LockedClass
+"""
+Module for class that prevents dynamic instance creation
 
-lc = LockedClass()
-lc.first_name = "John"
-try:
-    lc.last_name = "Snow"
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
+"""
+
+
+class LockedClass:
+    """ Prevent dynamic attribute creation"""
+    __slots__ = ['first_name']
+
+    def __init__(self):
+        """ The init method """
+        pass
