@@ -1,28 +1,17 @@
 #!/usr/bin/python3
-""" Function that returns the pascal triangle
-
-    Args:
-        n: number of lines
-
-    Returns:
-        Empty list: if n <= 0 Otherwise pascal triangle
-
-"""
 
 
-def pascal_triangle(n):
+class Student:
 
-    if n <= 0:
-        return ([])
+    def __init__(self, first_name, last_name, age):
 
-    pascal_t = [[1]]
-    for i in range(1, n):
-        row = [1]
-        prev = pascal_t[i - 1]
-        for j in range(len(prev)):
-                new = prev[j] + prev[j + 1] if j != len(prev) - 1 else 1
-                row.append(new)
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
 
-        pascal_t.append(row)
+    def to_json(self, attrs=None):
 
-    return pascal_t
+        if(type(attrs) == list and all(type(element) == str
+                                       for element in attrs)):
+            return {i: getattr(self, i) for i in attrs if hasattr(self, i)}
+        return self.__dict__
